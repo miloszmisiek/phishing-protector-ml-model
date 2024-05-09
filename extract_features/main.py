@@ -2,6 +2,7 @@ import asyncio
 import pandas as pd
 from extract_features.tools.convert_txt_to_csv import convert_txt_to_csv
 from extract_features.tools.extract_features import extract_features
+import random
 
 
 async def extract_features_for_all(urls: list):
@@ -15,8 +16,8 @@ async def main():
 
     phishing_urls = phishing_pd['url'].tolist()
     legals_urls = legals_pd['URL'].tolist()
-    phishing_urls_to_process = phishing_urls[:5]  # Select the first 5 URLs
-    legals_urls_to_process = legals_urls[:5]  # Select the first 5 URLs
+    phishing_urls_to_process = random.sample(phishing_urls, 3000)
+    legals_urls_to_process = random.sample(legals_urls, 3000)
 
     phishing_feature_data = await extract_features_for_all(phishing_urls_to_process)
     legals_feature_data = await extract_features_for_all(legals_urls_to_process)
