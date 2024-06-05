@@ -8,7 +8,7 @@ async def get_ttl_of_hostname(hostname):
         # For IPv6 addresses, change 'A' to 'AAAA'
         a_records = await resolver.query(hostname, 'A')
         if a_records:
-            # Assuming we're interested in the TTL of the first A record
+            # Get the TTL of the first A record
             ttl = a_records[0].ttl
             return ttl
         else:

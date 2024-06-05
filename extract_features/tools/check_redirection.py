@@ -7,7 +7,7 @@ limiter = AsyncLimiter(1, 1)
 async def check_redirects(url, session):
     try:
         async with limiter:
-            async with session.get(url, ssl=False) as response:  # Consider using an appropriate SSL context instead of disabling SSL
+            async with session.get(url, ssl=False) as response: 
                 print(Fore.GREEN + f"Checking redirects for {url}")
                 return len(response.history)
     except aiohttp.TooManyRedirects as e:
